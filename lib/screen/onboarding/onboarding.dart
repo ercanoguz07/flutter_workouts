@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_workouts/screen/home/home_screen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-
+import '../../constants.dart';
 import 'model/onboardingmodel.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -14,20 +15,38 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IntroductionScreen(
-        pages: pages,
-        // dotsContainerDecorator: DotsDecorator(
-        //   size: Size(10, 10),
-        //   color: Colors.blue,
-        //   activeSize: Size.square(15),
-        //   activeColor: Colors.red
-        // ),
-        showDoneButton: true,
-        done: Text("Done", style: TextStyle(fontSize: 20)),
-        showNextButton: true,
-        next: Text("Next", style: TextStyle(fontSize: 20)),
-        showSkipButton: true,
-        skip: Text("Skip", style: TextStyle(fontSize: 20)),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: kDefaultSize * 2),
+          child: IntroductionScreen(
+            curve: Curves.bounceInOut,
+            color: kGreyColor,
+            pages: pages,
+            dotsDecorator: DotsDecorator(
+                size: Size(kDefaultSize / 3, kDefaultSize / 3),
+                color: kBlueColor,
+                activeSize: Size.square(kDefaultSize * .65),
+                activeColor: kRedColor),
+            showDoneButton: true,
+            done: Text("Start", style: TextStyle(fontSize: kDefaultSize)),
+            showSkipButton: true,
+            skip: Text("Skip", style: TextStyle(fontSize: kDefaultSize)),
+            showNextButton: true,
+            next: Icon(
+              Icons.arrow_forward_ios,
+              size: kDefaultSize,
+            ),
+            onDone: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(),
+                ),
+              );
+            },
+            onSkip: () {},
+          ),
+        ),
       ),
     );
   }
