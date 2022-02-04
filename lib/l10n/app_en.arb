@@ -1,0 +1,20 @@
+{
+    "email":"Email",
+    "name":"name",
+    "fullname":"Full Name",
+    "cancel":"Cancel",
+    "save":"Save",
+    "password":"Password",
+    "rememberme":"Remember Me",
+    "forgetme":"Forget Me",
+    "login":"Login",
+    "start":"Start",
+    "skip":"Skip",
+    "boarding":"Boarding",
+    "route":"Route",
+    "letsgo":"Let's Go",
+    "welcomeback":"Welcome Back",
+    "home":"Home",
+    "profile":"Profile",
+    "setting":"Setting"
+}

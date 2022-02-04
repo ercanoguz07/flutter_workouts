@@ -1,0 +1,20 @@
+{
+    "email":"Email",
+    "name":"Adı",
+    "fullname":"Ad Soyad",
+    "cancel":"İptal",
+    "save":"Kaydet",
+    "password":"Şifre",
+    "rememberme":"Beni Hatırla",
+    "forgetme":"Beni Unut",
+    "login":"Giriş",
+    "start":"Başla",
+    "skip":"Atla",
+    "boarding":"Tanıtım",
+    "route":"Rotamız",
+    "letsgo":"Hadi Başlayalım",
+    "welcomeback":"Hoşgeldiniz",
+    "home":"Anasayfa",
+    "profile":"Profil",
+    "setting":"Setting"
+}

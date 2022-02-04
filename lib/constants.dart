@@ -10,3 +10,34 @@ const kYellowColor = Color(0xFFDC9E39);
 late SharedPreferences prefs;
 
 double kDefaultSize = 20;
+//bounce duration
+var kBounceDuration = Duration(milliseconds: 150);
+//decaration
+var linearBoxDecoration = BoxDecoration(
+  gradient: LinearGradient(
+    begin: Alignment.topCenter,
+    colors: [
+      kRedColor,
+      kRedColor.withOpacity(.8),
+      kRedColor.withOpacity(.4),
+    ],
+  ),
+);
+var borderTopLRBoxDec = BoxDecoration(
+  color: Colors.white,
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(kDefaultSize * 3),
+    topRight: Radius.circular(kDefaultSize * 3),
+  ),
+);
+var boxShadowBoxDecor = BoxDecoration(
+  color: Colors.white,
+  borderRadius: BorderRadius.circular(kDefaultSize),
+  boxShadow: [
+    BoxShadow(
+      color: Color.fromRGBO(255, 95, 27, .3),
+      blurRadius: kDefaultSize,
+      offset: Offset(0, kDefaultSize / 2),
+    ),
+  ],
+);

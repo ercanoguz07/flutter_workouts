@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_workouts/screen/home/home_screen.dart';
+import 'package:flutter_workouts/screen/home/homescreen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import '../../constants.dart';
 import 'model/onboardingmodel.dart';

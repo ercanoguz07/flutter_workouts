@@ -1,7 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_workouts/constants.dart';
-import 'package:flutter_workouts/screen/home/home_screen.dart';
+import 'package:flutter_workouts/screen/home/homescreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -17,16 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            colors: [
-              kRedColor,
-              kRedColor.withOpacity(.8),
-              kRedColor.withOpacity(.7),
-            ],
-          ),
-        ),
+        decoration: linearBoxDecoration,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -49,13 +41,7 @@ class LoginBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(kDefaultSize * 3),
-            topRight: Radius.circular(kDefaultSize * 3),
-          ),
-        ),
+        decoration: borderTopLRBoxDec,
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(kDefaultSize),
@@ -63,26 +49,19 @@ class LoginBody extends StatelessWidget {
               children: [
                 SizedBox(height: kDefaultSize),
                 Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(kDefaultSize),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(255, 95, 27, .3),
-                        blurRadius: kDefaultSize,
-                        offset: Offset(0, kDefaultSize / 2),
-                      ),
-                    ],
-                  ),
+                  decoration: boxShadowBoxDecor,
                   child: Column(
                     children: [
-                      LoginTextField(title: "Login"),
-                      LoginTextField(title: "Password"),
+                      LoginTextField(
+                          title: AppLocalizations.of(context)!.login),
+                      LoginTextField(
+                          title: AppLocalizations.of(context)!.password),
                     ],
                   ),
                 ),
                 SizedBox(height: kDefaultSize * 2),
-                Text("Forget Password?", style: TextStyle(color: kGreyColor)),
+                Text(AppLocalizations.of(context)!.forgetme + "?",
+                    style: TextStyle(color: kGreyColor)),
                 SizedBox(height: kDefaultSize),
                 InkWell(
                   onTap: () {
@@ -102,7 +81,7 @@ class LoginBody extends StatelessWidget {
                         color: kRedColor),
                     child: Center(
                       child: Text(
-                        "Login",
+                        AppLocalizations.of(context)!.login,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: kDefaultSize,
@@ -200,12 +179,12 @@ class LoginHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Login",
+            AppLocalizations.of(context)!.login,
             style: TextStyle(color: Colors.white, fontSize: kDefaultSize * 2),
           ),
           SizedBox(height: kDefaultSize / 2),
           Text(
-            "Welcome Back",
+            AppLocalizations.of(context)!.welcomeback,
             style: TextStyle(color: Colors.white, fontSize: kDefaultSize * .8),
           )
         ],
