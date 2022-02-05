@@ -3,6 +3,7 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter_workouts/screen/profile/profilescreen.dart';
 import 'package:flutter_workouts/screen/provider/userlistscreen.dart';
 import 'package:flutter_workouts/screen/setting/settingscreen.dart';
+import 'package:flutter_workouts/screen/sqflite/sqlitescreen.dart';
 import '../../constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -54,6 +55,18 @@ class HomeBody extends StatelessWidget {
                   Wrap(
                     children: [
                       HomeMenuButon(
+                          title: "SqfLite",
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SqfLiteScreen(),
+                              ),
+                            );
+                          },
+                          icon: Icons.image_outlined),
+                      SizedBox(width: kDefaultSize * 1.2),
+                      HomeMenuButon(
                           title: AppLocalizations.of(context)!.provider,
                           press: () {
                             Navigator.push(
@@ -63,7 +76,7 @@ class HomeBody extends StatelessWidget {
                               ),
                             );
                           },
-                          icon: Icons.person),
+                          icon: Icons.person_add_alt),
                       SizedBox(width: kDefaultSize * 1.2),
                       HomeMenuButon(
                           title: AppLocalizations.of(context)!.profile,

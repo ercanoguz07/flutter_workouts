@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_workouts/screen/login/loginscreen.dart';
 import 'package:flutter_workouts/screen/onboarding/onboarding.dart';
+import 'package:flutter_workouts/screen/sqflite/dbhelper.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,6 +15,8 @@ bool show = true;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GestureBinding.instance?.resamplingEnabled = true;
+  DatabaseHandler databaseHandler = new DatabaseHandler();
+  await databaseHandler.initializeDB();
   prefs = await SharedPreferences.getInstance();
   show = prefs.getBool("ONBOARD") ?? true;
   runApp(
