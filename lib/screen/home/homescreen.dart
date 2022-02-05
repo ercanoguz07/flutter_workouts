@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter_workouts/screen/profile/profilescreen.dart';
+import 'package:flutter_workouts/screen/provider/userlistscreen.dart';
+import 'package:flutter_workouts/screen/setting/settingscreen.dart';
 import '../../constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -42,18 +44,30 @@ class HomeBody extends StatelessWidget {
     return Expanded(
       child: Container(
         decoration: borderTopLRBoxDec,
+        width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
             Padding(
               padding: EdgeInsets.all(kDefaultSize),
               child: Column(
                 children: [
-                  Row(
+                  Wrap(
                     children: [
-                      Expanded(
-                        child: Bounce(
-                          duration: kBounceDuration,
-                          onPressed: () {
+                      HomeMenuButon(
+                          title: AppLocalizations.of(context)!.provider,
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UseListScreen(),
+                              ),
+                            );
+                          },
+                          icon: Icons.person),
+                      SizedBox(width: kDefaultSize * 1.2),
+                      HomeMenuButon(
+                          title: AppLocalizations.of(context)!.profile,
+                          press: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -61,63 +75,65 @@ class HomeBody extends StatelessWidget {
                               ),
                             );
                           },
-                          child: Container(
-                            height: kDefaultSize * 5,
-                            decoration: boxShadowBoxDecor,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.person,
-                                    size: kDefaultSize * 1.2,
-                                    color: kBlueColor),
-                                SizedBox(
-                                  width: kDefaultSize / 4,
-                                ),
-                                Text(
-                                  AppLocalizations.of(context)!.profile,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: kDefaultSize * 1.2),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                          icon: Icons.person),
                       SizedBox(width: kDefaultSize * 1.2),
-                      Expanded(
-                        child: Bounce(
-                          duration: kBounceDuration,
-                          onPressed: () {},
-                          child: Container(
-                            height: kDefaultSize * 5,
-                            decoration: boxShadowBoxDecor,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.settings,
-                                    size: kDefaultSize * 1.2,
-                                    color: kBlueColor),
-                                SizedBox(
-                                  width: kDefaultSize / 4,
-                                ),
-                                Text(
-                                  AppLocalizations.of(context)!.setting,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: kDefaultSize * 1.2),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      )
+                      HomeMenuButon(
+                          title: AppLocalizations.of(context)!.setting,
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SettingScreen(),
+                              ),
+                            );
+                          },
+                          icon: Icons.settings),
+                      SizedBox(height: kDefaultSize),
                     ],
                   )
                 ],
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HomeMenuButon extends StatelessWidget {
+  const HomeMenuButon({
+    Key? key,
+    required this.title,
+    required this.press,
+    required this.icon,
+  }) : super(key: key);
+  final String title;
+  final VoidCallback press;
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return Bounce(
+      duration: kBounceDuration,
+      onPressed: press,
+      child: Container(
+        margin: EdgeInsets.only(bottom: kDefaultSize),
+        height: kDefaultSize * 5,
+        width: MediaQuery.of(context).size.width / 3,
+        decoration: boxShadowBoxDecor,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: kDefaultSize * 1.2, color: kBlueColor),
+            SizedBox(
+              width: kDefaultSize / 4,
+            ),
+            Text(
+              title,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                  fontSize: kDefaultSize * 1.2),
             ),
           ],
         ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../../constants.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -34,40 +33,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Center(
                       child: Stack(
                         children: [
-                          Container(
-                            height: kDefaultSize * 6,
-                            width: kDefaultSize * 6,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: AssetImage("assets/images/pp1.jpg"),
-                                  fit: BoxFit.cover),
-                              border: Border.all(
-                                  width: kDefaultSize / 5, color: Colors.white),
-                              boxShadow: [
-                                BoxShadow(
-                                  spreadRadius: 2,
-                                  color: Colors.black.withOpacity(.1),
-                                  blurRadius: kDefaultSize / 2,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: Container(
-                              height: kDefaultSize * 2,
-                              width: kDefaultSize * 2,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: kBlueColor,
-                                border:
-                                    Border.all(width: 4, color: Colors.white),
-                              ),
-                              child: Icon(Icons.edit, color: Colors.white),
-                            ),
-                          ),
+                          ProfileImage(image: "assets/images/pp1.jpg"),
+                          ProfilPhotoEdit(),
                         ],
                       ),
                     ),
@@ -81,17 +48,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     buildTextField(AppLocalizations.of(context)!.password,
                         AppLocalizations.of(context)!.profile, true),
                     Divider(color: kGreyColor, height: 2),
-                    buildTextField("Location", "Location", false),
+                    buildTextField(AppLocalizations.of(context)!.adress,
+                        AppLocalizations.of(context)!.adress, false),
                     Divider(color: kGreyColor, height: 2),
                     SizedBox(height: kDefaultSize * 2),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ProfileButon(
-                            color: kGreyColor.withOpacity(.7), title: "Cancel"),
+                            color: kGreyColor.withOpacity(.7),
+                            title: AppLocalizations.of(context)!.cancel),
                         SizedBox(width: kDefaultSize),
                         ProfileButon(
-                            color: kRedColor.withOpacity(.9), title: "Save"),
+                          color: kRedColor.withOpacity(.9),
+                          title: AppLocalizations.of(context)!.save,
+                        ),
                       ],
                     )
                   ],
@@ -131,6 +102,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
             color: kGreyColor,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ProfilPhotoEdit extends StatelessWidget {
+  const ProfilPhotoEdit({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: 0,
+      right: 0,
+      child: Container(
+        height: kDefaultSize * 2,
+        width: kDefaultSize * 2,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: kBlueColor,
+          border: Border.all(width: 4, color: Colors.white),
+        ),
+        child: Icon(Icons.edit, color: Colors.white),
+      ),
+    );
+  }
+}
+
+class ProfileImage extends StatelessWidget {
+  const ProfileImage({
+    Key? key,
+    required this.image,
+  }) : super(key: key);
+  final String image;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: kDefaultSize * 6,
+      width: kDefaultSize * 6,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
+        border: Border.all(width: kDefaultSize / 5, color: Colors.white),
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: 2,
+            color: Colors.black.withOpacity(.1),
+            blurRadius: kDefaultSize / 2,
+          ),
+        ],
       ),
     );
   }

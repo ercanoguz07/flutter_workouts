@@ -1,7 +1,12 @@
 {
     "email":"Email",
+    "adress":"Adres",
     "name":"Adı",
-    "fullname":"Ad Soyad",
+    "fullname":"Soyadı",
+    "country":"Ülke",
+    "adduse":"Ekle",
+    "userlist":"Kullanıcı Listesi",
+    "alluser":"Tüm Kullanıcı Listesi",
     "cancel":"İptal",
     "save":"Kaydet",
     "password":"Şifre",
@@ -16,5 +21,6 @@
     "welcomeback":"Hoşgeldiniz",
     "home":"Anasayfa",
     "profile":"Profil",
+    "profiver":"Provider",
     "setting":"Setting"
 }

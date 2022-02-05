@@ -3,6 +3,7 @@ import 'package:flutter_workouts/screen/home/homescreen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import '../../constants.dart';
 import 'model/onboardingmodel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -28,9 +29,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   activeSize: Size.square(kDefaultSize * .65),
                   activeColor: kRedColor),
               showDoneButton: true,
-              done: Text("Start", style: TextStyle(fontSize: kDefaultSize)),
+              done: Text(AppLocalizations.of(context)!.start,
+                  style: TextStyle(fontSize: kDefaultSize)),
               showSkipButton: true,
-              skip: Text("Skip", style: TextStyle(fontSize: kDefaultSize)),
+              skip: Text(AppLocalizations.of(context)!.skip,
+                  style: TextStyle(fontSize: kDefaultSize)),
               showNextButton: true,
               next: Icon(
                 Icons.arrow_forward_ios,

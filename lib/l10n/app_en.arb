@@ -1,7 +1,12 @@
 {
     "email":"Email",
     "name":"name",
-    "fullname":"Full Name",
+    "adress":"Adress",
+    "fullname":"Last Name",
+    "country":"Country",
+    "adduse":"Add",
+    "userlist":"User List",
+    "alluser":"All User List",
     "cancel":"Cancel",
     "save":"Save",
     "password":"Password",
@@ -16,5 +21,6 @@
     "welcomeback":"Welcome Back",
     "home":"Home",
     "profile":"Profile",
+    "provider":"Provider",
     "setting":"Setting"
 }
